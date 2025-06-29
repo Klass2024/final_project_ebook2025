@@ -1,0 +1,666 @@
+
+                
+                // Reset form after successful download
+                setTimeout(function() {
+                    document.getElementById('downloadForm').reset();
+                }, 2000);<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Lassané Kaboré - Public Health eBook</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #fffacd 0%, #f5f5dc 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #722f37 0%, #8b1538 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #722f37;
+            font-size: 1.5rem;
+        }
+
+        .header-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .header-text p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .hero-section {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255,250,205,0.8) 0%, rgba(245,245,220,0.8) 100%);
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            color: #722f37;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .ebook-card {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid #722f37;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ebook-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #722f37 0%, #8b1538 100%);
+        }
+
+        .ebook-title {
+            font-size: 2.5rem;
+            color: #722f37;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .ebook-description {
+            font-size: 1.2rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .about-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .profile-card {
+            background: linear-gradient(135deg, #fffacd 0%, #f5f5dc 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid #722f37;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+            border: 4px solid #722f37;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 1.8rem;
+            color: #722f37;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-title {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid #722f37;
+        }
+
+        .about-text h3 {
+            color: #722f37;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            text-align: justify;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .download-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #722f37 0%, #8b1538 100%);
+            color: white;
+        }
+
+        .download-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .download-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .download-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            color: #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #722f37;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #722f37;
+            box-shadow: 0 0 0 3px rgba(114,47,55,0.1);
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #722f37 0%, #8b1538 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(114,47,55,0.3);
+        }
+
+        .download-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-content a {
+            color: #fffacd;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-content a:hover {
+            background: rgba(255,250,205,0.1);
+        }
+
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+            display: none;
+        }
+
+        .error-message {
+            background: #f44336;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .ebook-card {
+                padding: 2rem 1rem;
+            }
+
+            .ebook-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">LK</div>
+                    <div class="header-text">
+                        <h1>Dr. Lassané Kaboré</h1>
+                        <p>Public Health & Epidemiology Expert</p>
+                    </div>
+                </div>
+                <nav class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#ebook">eBook</a>
+                    <a href="#download">Download</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Advancing Public Health Through Evidence</h2>
+                <p>Bridging the gap between research and practice with over 15 years of experience in public health, epidemiology, and clinical research</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="ebook" class="hero-section">
+        <div class="container">
+            <div class="ebook-card">
+                <h2 class="ebook-title">Public Health, Epidemiology, and Clinical Research</h2>
+                <p class="ebook-description">100 Essential Concepts Made Easy</p>
+                <p>A comprehensive guide designed to make complex public health and epidemiological concepts accessible to students, professionals, and researchers. This essential resource covers fundamental principles, methodologies, and practical applications in the field.</p>
+                
+                <div style="margin-top: 2rem; padding: 2rem; background: #f9f9f9; border-radius: 10px; border-left: 5px solid #722f37;">
+                    <h3 style="color: #722f37; margin-bottom: 1rem; font-size: 1.5rem;">Book Contents - 10 Essential Sections:</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; text-align: left;">
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid #ddd;">
+                            <strong style="color: #722f37;">1. Public Health Foundation</strong>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #666;">Core principles and frameworks</p>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid #ddd;">
+                            <strong style="color: #722f37;">2. Prevention and Control</strong>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #666;">Disease prevention strategies</p>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid #ddd;">
+                            <strong style="color: #722f37;">3. Epidemiologic Study Design</strong>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #666;">Research methodologies</p>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid #ddd;">
+                            <strong style="color: #722f37;">4. Bias and Confounding</strong>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #666;">Study validity concepts</p>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid #ddd;">
+                            <strong style="color: #722f37;">5. Measures of Disease Frequency</strong>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #666;">Key epidemiological measures</p>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid #ddd;">
+                            <strong style="color: #722f37;">6. Statistical Methods</strong>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #666;">Data analysis and inference</p>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid #ddd;">
+                            <strong style="color: #722f37;">7. Clinical Trials</strong>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #666;">Intervention study design</p>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid #ddd;">
+                            <strong style="color: #722f37;">8. Surveillance & Outbreaks</strong>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #666;">Disease monitoring systems</p>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid #ddd;">
+                            <strong style="color: #722f37;">9. Diagnostics and Screening</strong>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #666;">Testing and evaluation</p>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid #ddd;">
+                            <strong style="color: #722f37;">10. Immunization Concepts</strong>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #666;">Vaccine principles and applications</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="https://github.com/Klass2024/final_project_ebook2025/blob/main/lkabore_pic.jpeg?raw=true" alt="Dr. Lassané Kaboré">
+                    </div>
+                    <h3 class="profile-name">Dr. Lassané Kaboré</h3>
+                    <p class="profile-title">PharmD, MSc, MSPH, PhD</p>
+                    <p class="profile-title">Senior Program Officer at Gavi</p>
+                </div>
+                <div class="about-text">
+                    <h3>About Dr. Kaboré</h3>
+                    <p>Dr. Lassané Kaboré is a senior public health professional with over 15 years of experience at the intersection of public health research, health policy, and program delivery, with a focus on infectious diseases and immunization. He is passionate about generating and applying real-world evidence to inform data-driven, evidence-based programmatic and policy decisions.</p>
+                    
+                    <p>Dr. Kaboré has extensive expertise in research methodologies, including systematic reviews, clinical trials, epidemiology/pharmacoepidemiology, and biostatistics. His work evaluates the use, effectiveness, impact, safety, and cost of drugs and vaccines.</p>
+                    
+                    <p>He began his career in 2007 as a Regional Pharmacy Officer with Burkina Faso's Ministry of Health before transitioning to the international development sector. He has held positions at the Agence de Médecine Préventive (AMP), PATH, and currently serves as a Senior Program Officer, Evaluation and Learning at Gavi, based in Geneva, Switzerland.</p>
+                    
+                    <p>At Gavi, he leads learning agendas for multiple vaccines—including malaria, Mpox, Ebola, hexavalent, typhoid conjugate (TCV), and oral cholera (OCV)—through implementation and impact studies conducted by leading research institutions.</p>
+                    
+                    <p>Dr. Kaboré holds a PharmD from the University of Ouagadougou (Burkina Faso), a joint MSc in International Health from Charité – Universitätsmedizin Berlin and Bordeaux School of Public Health (ISPED), an MSPH in Epidemiology from the University of Alabama at Birmingham (USA), and a PhD in Global Health from the University of Geneva (Switzerland).</p>
+                    
+                    <p>Bilingual in English and French, he has published 20 peer-reviewed scientific articles and continues to contribute to the advancement of public health through research and policy implementation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download-section">
+        <div class="container">
+            <div class="download-content">
+                <h3>Download the eBook</h3>
+                <p>Get instant access to "Public Health, Epidemiology, and Clinical Research: 100 Essential Concepts Made Easy" by completing the form below.</p>
+                
+                <div class="form-container">
+                    <div id="successMessage" class="success-message">
+                        Thank you! Your download will begin shortly.
+                    </div>
+                    <div id="errorMessage" class="error-message">
+                        Please fill in all required fields.
+                    </div>
+                    
+                    <form id="downloadForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="country">Country *</label>
+                            <select id="country" name="country" required>
+                                <option value="">Select your country</option>
+                                <option value="Afghanistan">Afghanistan</option>
+                                <option value="Albania">Albania</option>
+                                <option value="Algeria">Algeria</option>
+                                <option value="Argentina">Argentina</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Austria">Austria</option>
+                                <option value="Bangladesh">Bangladesh</option>
+                                <option value="Belgium">Belgium</option>
+                                <option value="Brazil">Brazil</option>
+                                <option value="Burkina Faso">Burkina Faso</option>
+                                <option value="Canada">Canada</option>
+                                <option value="China">China</option>
+                                <option value="Denmark">Denmark</option>
+                                <option value="Egypt">Egypt</option>
+                                <option value="France">France</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Ghana">Ghana</option>
+                                <option value="India">India</option>
+                                <option value="Italy">Italy</option>
+                                <option value="Japan">Japan</option>
+                                <option value="Kenya">Kenya</option>
+                                <option value="Netherlands">Netherlands</option>
+                                <option value="Nigeria">Nigeria</option>
+                                <option value="Norway">Norway</option>
+                                <option value="South Africa">South Africa</option>
+                                <option value="Spain">Spain</option>
+                                <option value="Sweden">Sweden</option>
+                                <option value="Switzerland">Switzerland</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="United States">United States</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="download-btn" id="downloadBtn">
+                            Download eBook
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="https://www.linkedin.com/in/lassan%C3%A9-kabore-pharmd-mscih-msph-ph-d-07380818/" target="_blank">LinkedIn Profile</a>
+                <span>|</span>
+                <span>&copy; 2025 Dr. Lassané Kaboré. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('downloadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const country = document.getElementById('country').value;
+            
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            // Hide previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Basic validation
+            if (!name || !email || !country) {
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorMessage.textContent = 'Please enter a valid email address.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            // Simulate form submission
+            downloadBtn.disabled = true;
+            downloadBtn.textContent = 'Processing...';
+            
+            // Store user data (in a real implementation, this would be sent to a server)
+            const userData = {
+                name: name,
+                email: email,
+                country: country,
+                timestamp: new Date().toISOString()
+            };
+            
+            console.log('User data collected:', userData);
+            
+            // Simulate processing time
+            setTimeout(function() {
+                successMessage.style.display = 'block';
+                downloadBtn.disabled = false;
+                downloadBtn.textContent = 'Download eBook';
+                
+                // In a real implementation, you would:
+                // 1. Send the data to your server
+                // 2. Trigger the actual file download
+                
+                // Trigger the actual eBook download
+                const link = document.createElement('a');
+                link.href = 'https://github.com/Klass2024/final_project_ebook2025/blob/main/public_health_flashcards_final.pdf?raw=true';
+                link.download = 'Public_Health_Epidemiology_Clinical_Research_100_Concepts.pdf';
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+            }, 2000);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
